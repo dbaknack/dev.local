@@ -75,16 +75,50 @@ git branch
 
 question: how do i stage all my changed?
 
-```
+```git
 git add .
 ```
 
 question: how do i commit?
 
-```
+```git
 git commit -m "Add repository rules and workspace configuration"
 ```
 
-```
+```git
 git push
+```
+
+
+question: what if i want to push this from develop to main?
+
+```git
+First, make sure everything is pushed:
+
+git checkout develop
+git pull origin develop
+```
+
+Now switch to main:
+```git
+git checkout main
+```
+
+Update it so you’re not merging into something stale:
+
+```git
+git pull origin main
+```
+
+Now merge develop into main:
+```git
+git merge develop
+```
+
+If there are no conflicts, Git will create a merge commit (unless it can fast-forward).
+
+Now push main:
+
+```git
+git push origin main
 ```
