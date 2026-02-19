@@ -1,0 +1,11 @@
+{
+  "markdown.styles": [".vscode/markdown.css"],
+  "editor.fontFamily": "JetBrains Mono, Consolas, monospace",
+  "terminal.integrated.profiles.osx": {
+    "pwsh": {
+      "path": "/usr/local/bin/pwsh"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "pwsh",
+   "terminal.integrated.cwd": "${workspaceFolder}"
+}
