@@ -7,6 +7,10 @@ $functions = @(
         path = "./lib/active-directory-functions.ps1"
     }
 )
+# work with credentials
+$creds = set-creds -username $env:LAB_DC01_USERNAME -password $env:LAB_DC01_PASSWORD
+$session = new-pssession -hostname $env:LAB_DC01_IP -Port $env:LAB_DC01_PORT -UserName $creds.username
+
 
 # tasks definition
 $tasks = @(
@@ -36,12 +40,7 @@ $tasks = @(
     }
 )
 
-# work with credentials
-$creds = set-creds -username $env:LAB_DC01_USERNAME -password $env:LAB_DC01_PASSWORD
-$session = new-pssession -hostname $env:LAB_DC01_IP -Port $env:LAB_DC01_PORT -UserName $creds.username
-
-
-# task: check dns record exists
+# task: check dns record exists (this works on windows, not on mac)
 $results = Invoke-Command -Session $session -ScriptBlock {
     param($task)
 
