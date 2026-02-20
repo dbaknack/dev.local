@@ -1,4 +1,4 @@
-# lib/env.ps1
+write-host "loading .env.ps1" -f "yellow"
 
 function Import-EnvFile {
     param (
@@ -14,4 +14,22 @@ function Import-EnvFile {
             }
         }
     }
+}
+
+function set-creds {
+    param(
+        [string]$username,
+        [string]$password
+    )
+    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+    $credential_wrapper = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
+    return $credential_wrapper
+}
+
+function get-func_def {
+    param(
+        [hashtable]$function
+    )
+    $func_def = Get-Content $function.path -Raw
+    return $func_def
 }
